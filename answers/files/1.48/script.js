@@ -1,9 +1,16 @@
+const ADDITION = 'ADDITION';
+const SUBTRACTION = 'SUBTRACTION';
+const MULTIPLICATION = 'MULTIPLICATION';
+const EXPONENTIATION = 'EXPONENTIATION';
+const DIVISION = 'DIVISION';
+const MODULUS = 'MODULUS';
+const ROOT = 'ROOT';
+
 let leftOperand;
 let rightOperand;
-let operator = 'ADDITION';
+let operator = ADDITION;
 let answer;
 let expression;
-
 
 function onLeftOperandChange(value) {
   console.log('onLeftOperandChange', value);
@@ -22,34 +29,35 @@ function onOperatorChange(value) {
 
 function onSubmit () {
   console.log('onSubmit');
+  let iterationOperand = expression ?? leftOperand;
   switch (operator) {
-    case 'ADDITION':
+    case ADDITION:
       answer = leftOperand + rightOperand;
-      expression = `(${expression ?? leftOperand} + ${rightOperand})`;
+      expression = `(${iterationOperand} + ${rightOperand})`;
       break;
-    case 'SUBTRACTION':
+    case SUBTRACTION:
       answer = leftOperand - rightOperand;
-      expression = `(${expression ?? leftOperand} - ${rightOperand})`;
+      expression = `(${iterationOperand} - ${rightOperand})`;
       break;
-    case 'MULTIPLICATION':
+    case MULTIPLICATION:
       answer = leftOperand * rightOperand;
-      expression = `(${expression ?? leftOperand} * ${rightOperand})`;
+      expression = `(${iterationOperand} * ${rightOperand})`;
       break;
-    case 'EXPONENTIATION':
+    case EXPONENTIATION:
       answer = leftOperand ** rightOperand;
-      expression = `(${expression ?? leftOperand} xª ${rightOperand})`;
+      expression = `(${iterationOperand} xª ${rightOperand})`;
       break;
-    case 'DIVISION':
+    case DIVISION:
       answer = leftOperand / rightOperand;
-      expression = `(${expression ?? leftOperand} / ${rightOperand})`;
+      expression = `(${iterationOperand} / ${rightOperand})`;
       break;
-    case 'MODULUS':
+    case MODULUS:
       answer = leftOperand % rightOperand;
-      expression = `(${expression ?? leftOperand} % ${rightOperand})`;
+      expression = `(${iterationOperand} % ${rightOperand})`;
       break;
-    case 'ROOT':
+    case ROOT:
       answer = leftOperand ** (1 / rightOperand);
-      expression = `(${expression ?? leftOperand} √ ${rightOperand})`;
+      expression = `(${iterationOperand} √ ${rightOperand})`;
       break;
   }
   setResult(answer);
@@ -58,9 +66,6 @@ function onSubmit () {
 
 function onClear () {
   console.log('onClear');
-  leftOperand = null;
-  rightOperand = null;
-  operator = 'ADDITION';
-  answer = null;
+  operator = ADDITION;
   expression = null;
 }
