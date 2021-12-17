@@ -66,6 +66,5 @@ function onSubmit () {
 
 function onClear () {
   console.log('onClear');
-  operator = ADDITION;
   expression = null;
 }
